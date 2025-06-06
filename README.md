@@ -12,7 +12,7 @@ Crucially, the verdict of each verification instance (either SAT or UNSAT) is kn
 
 ## Usage
 
-Clone the repository and run install.sh. This will create the Python virtual environment "sat_relu_env" with the following dependencies:
+Clone the repository and run install.sh. This will install the following Python dependencies:
   - numpy
   - pytorch
   - onnx
