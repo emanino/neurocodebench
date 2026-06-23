@@ -1,6 +1,6 @@
-# NeuroCodeBench - VNN-COMP Version
+# NeuroCodeBench - VNN-COMP'26 Version
 
-This is an experimental branch of NeuroCodeBench written specifically for VNN-COMP'25.
+This is an experimental branch of NeuroCodeBench written originally for VNN-COMP'25 and slightly modified for VNN-COMP'26..
 
 Currently, it contains only SAT-ReLU: a synthetic benchmark for neural network verification tools.
 

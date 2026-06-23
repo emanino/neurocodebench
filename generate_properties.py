@@ -24,10 +24,10 @@ def remake_dir(path):
     os.makedirs(path)
 
 N_BENCH_PAIRS = 50 # number of SAT/UNSAT instance pairs
-N_VAR_MIN = 2 # minimum number of network input variables
+N_VAR_MIN = 5 # minimum number of network input variables
 N_VAR_MAX = 100 # maximum number of network input variables
 X_CLAUSE_MIN = 1 # CNF clauses: minimum variable multiplier
-X_CLAUSE_MAX = 5 # CNF clauses: maximum variable multiplier
+X_CLAUSE_MAX = 10 # CNF clauses: maximum variable multiplier
 VNN_COMP_TIMEOUT = 100
 
 if __name__ == "__main__":
@@ -51,6 +51,7 @@ if __name__ == "__main__":
     # - a pair of CNF formulae (SAT, UNSAT) in Dimacs format
     # - convert them into the equivalent ONNX neural networks
     # - write the corresponding VNN-LIB properties
+    k = 0
     for i in range(N_BENCH_PAIRS):
     
         # select a random number of variables and clauses in the specified ranges
@@ -67,9 +68,12 @@ if __name__ == "__main__":
         n_sat_clauses = sat_formula[0]["clauses"]
         n_unsat_clauses = unsat_formula[0]["clauses"]
         
-        # shared file names (Dimacs, ONNX, VNN-LIB)
-        sat_name = "sat_v" + str(n_var) + "_c" + str(n_sat_clauses)
-        unsat_name = "unsat_v" + str(n_var) + "_c" + str(n_unsat_clauses)
+        # shared file names (Dimacs, ONNX, VNN-LIB, Id)
+        sat_name = ("sat_v" + str(n_var) +
+                    "_c" + str(n_sat_clauses) + "_k" + str(k))
+        unsat_name = ("unsat_v" + str(n_var) +
+                      "_c" + str(n_unsat_clauses) + "_k" + str(k+1))
+        k += 2
         
         # save them in Dimacs format for reference
         print_dimacs("./dimacs/" + sat_name + ".dimacs",
